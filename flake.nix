@@ -22,7 +22,8 @@
       ];
       inputs.nix-darwin = lib.mkDefault nix-darwin;
       systems = [ "aarch64-darwin" "x86_64-darwin" ];
-      outputs.tests = import ./tests inputs;
     };
+
+    outputs.tests = import ./tests inputs;
   };
 }
