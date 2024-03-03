@@ -17,7 +17,7 @@ Provides integration for `darwinConfigurations` & `darwinModules` into your flak
     imports = [ flakelight-darwin.flakelightModules.default ];
     darwinConfigurations.example = {
       system = "aarch64-darwin";
-      modules = [{ system.stateVersion = "24.05"; }];
+      modules = [{ system.stateVersion = 4; }];
     };
   };
 }
