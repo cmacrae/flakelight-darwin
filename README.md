@@ -1,6 +1,6 @@
 # flakelight-darwin
 
-A [nix-darwin][1] module for [flakelight][1].
+A [nix-darwin][1] module for [flakelight][2].
 
 [1]: https://github.com/LnL7/nix-darwin
 [2]: https://github.com/nix-community/flakelight
