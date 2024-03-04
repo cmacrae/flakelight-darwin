@@ -22,7 +22,10 @@ jobs:
       - run: nix flake update --commit-lock-file
       - run: nix flake check --all-systems
       - run: nix eval .#tests
-      # - run: |
-      #     nix flake check ./templates/darwinSystem --all-systems \
-      #       --override-input flakelight-darwin .
+      - run: |
+          nix flake check ./templates/basic --all-systems \
+            --override-input flakelight-darwin .
+      - run: |
+          nix flake check ./templates/autoload --all-systems \
+            --override-input flakelight-darwin .
       - run: git push

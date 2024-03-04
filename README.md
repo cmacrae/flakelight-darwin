@@ -36,3 +36,36 @@ For further guidance, consult [flakelight's excellent API guide][5] and note the
 & `nixosModules`, wherein you can substitute `darwinConfigurations` & `darwinModules`
 
 [5]: https://github.com/nix-community/flakelight/blob/master/API_GUIDE.md
+
+## Getting Started
+There are two [example templates](templates) provided
+
+### [`basic`](templates/basic)
+Provides a minimal example Darwin system declaration, directly in `flake.nix`.  
+
+Instantiate your own with:
+```
+nix flake init -t github:cmacrae/flakelight-darwin
+```
+
+### [`autoload`](templates/autoload)
+Provides an example configuration comprised of multiple Darwin system declarations, importing an `example` module, represented in a directory structure:
+```
+.
+├── flake.nix
+└── nix
+    ├── darwin
+    │   ├── host1
+    │   │   ├── configuration.nix
+    │   │   └── default.nix
+    │   └── host2
+    │       ├── configuration.nix
+    │       └── default.nix
+    └── darwinModules
+        └── example.nix
+```
+
+Instantiate your own with:
+```
+nix flake init -t github:cmacrae/flakelight-darwin#autoload
+```
