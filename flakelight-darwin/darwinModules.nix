@@ -7,8 +7,7 @@ let
   inherit (lib) mkOption mkIf mkMerge;
   inherit (lib.types) lazyAttrsOf;
   inherit (flakelight.types) module nullable optCallWith;
-in
-{
+in {
   options = {
     darwinModule = mkOption {
       type = nullable module;

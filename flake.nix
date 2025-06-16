@@ -13,17 +13,19 @@
     };
   };
 
-  outputs = { flakelight, nix-darwin, ... }@inputs: flakelight ./. {
-    imports = [ flakelight.flakelightModules.flakelightModule ];
-    flakelightModule = { lib, ... }: {
-      imports = [
-        ./flakelight-darwin/darwinModules.nix
-        ./flakelight-darwin/darwinConfigurations.nix
-      ];
-      inputs.nix-darwin = lib.mkDefault nix-darwin;
-      systems = [ "aarch64-darwin" "x86_64-darwin" ];
-    };
+  outputs = { flakelight, nix-darwin, ... }@inputs:
+    flakelight ./. {
+      imports = [ flakelight.flakelightModules.extendFlakelight ];
+      templates = import ./templates;
+      flakelightModule = { lib, ... }: {
+        imports = [
+          ./flakelight-darwin/darwinModules.nix
+          ./flakelight-darwin/darwinConfigurations.nix
+        ];
+        inputs.nix-darwin = lib.mkDefault nix-darwin;
+        systems = [ "aarch64-darwin" "x86_64-darwin" ];
+      };
 
-    outputs.tests = import ./tests inputs;
-  };
+      outputs.tests = import ./tests inputs;
+    };
 }
